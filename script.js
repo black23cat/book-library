@@ -25,3 +25,17 @@ function Book(author, title, pages, read){
   this.read = read;
   this.bookData = kebabCase(title);
 }
+
+function addBookToLibrary(author, title, pages, read){
+  // Check if there's already a book in a myLibrary array
+  if(myLibrary.length == 0){
+    myLibrary.push(new Book(author, title, pages, read));
+  }else{
+    // if the book is already in myLibrary this func will not add the book
+    if(checkAuthor(myLibrary, author) && checkTitle(myLibrary, title)){
+      alert(`This book is already in your galery.`);
+    }else{
+      myLibrary.push(new Book(author, title, pages, read));
+    }
+  };
+}
