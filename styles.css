@@ -1,1 +1,22 @@
-body{background-color: cyan;}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container div{
+  padding: 15px;
+  border: 1px solid red;
+}
+
+.container{
+  display: grid;
+  grid-template-rows: minmax(150px, 1fr) 3fr;
+}
+
+input, button, textarea, select {
+  font: inherit;
+  font-size: 100%;
+  padding: 0;
+  margin: 0;
+}
