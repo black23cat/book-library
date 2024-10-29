@@ -26,6 +26,37 @@ function Book(author, title, pages, read){
   this.bookData = kebabCase(title);
 }
 
+Book.prototype.displayToCard = function(){
+  const bookCard = document.createElement("div");
+  const bookTitle = document.createElement("p");
+  const bookAuthor = document.createElement("p");
+  const bookPages = document.createElement("p");
+  const readPara = document.createElement("p");
+  const readParaToggle = document.createElement("button");
+  const deleteBook = document.createElement("button");
+  const dataAttribute = kebabCase(this.title);
+  const readStatus = this.read === "yes" ? true: false;
+  bookCard.setAttribute("class", "card");
+  bookCard.setAttribute("id", dataAttribute)
+  bookTitle.textContent = this.title;
+  bookAuthor.textContent = this.author;
+  bookPages.textContent = this.pages;
+  readPara.textContent = readStatus? "You have read this book."
+                        : "This book is not read yet.";
+  readParaToggle.textContent = readStatus? "Read" : "Unread";
+  readParaToggle.setAttribute("class", "read-toggle");
+  deleteBook.textContent = "X";
+  deleteBook.setAttribute("data-book-title", dataAttribute);
+  deleteBook.setAttribute("class", "remove")
+  bookCard.appendChild(bookTitle);
+  bookCard.appendChild(bookAuthor);
+  bookCard.appendChild(bookPages);
+  bookCard.appendChild(readPara);
+  bookCard.appendChild(readParaToggle);
+  bookCard.appendChild(deleteBook);
+  content.appendChild(bookCard);
+}
+
 function addBookToLibrary(a, t, p, r){
   // Check if there's already a book in a myLibrary array
   if(myLibrary.length == 0){
@@ -59,3 +90,10 @@ function checkTitle(array, t){
     e === t ? result = true: result = false);
   return result;
 }
+
+function kebabCase(str){
+  return str.toLowerCase().split(" ").join("-");
+}
+
+myLibrary.push(new Book("J.R.R Tolkiens", "The Hobbit", "298", "no"));
+myLibrary[0].displayToCard();
