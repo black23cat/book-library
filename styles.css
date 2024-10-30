@@ -4,14 +4,63 @@
   box-sizing: border-box;
 }
 
-.container div{
+body{
+  font: 1.2rem "EB Garamond", sans-serif;
+  text-align: center;
+}
+
+.image-credits{
+  position: absolute;
+  bottom: 14px;
+  right: 10px;
+  color: white;
+  font-weight: 600;
+  text-shadow: 2px 2px 2px rgb(124, 124, 124);
+}
+
+.image-credits a{
+  color: white;
+}
+
+.header-images{
+  background-image: url(./images/pexels-pixabay.png);
+  background-size: contain;
+  background-repeat: repeat;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 1px 2px 3px rgb(124, 124, 124);
+}
+
+.header-text h1{
+  font-size: 3rem;
+}
+
+#show-form-modal::after{
+  background-image: url(./images/flaticon-plus-circle.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+  content: "";
+  width: 100px;
+  height: 100px;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 5;
+}
+
+#show-form-modal:hover{
+  cursor: pointer;
+}
+
+.card{
   padding: 15px;
   border: 1px solid red;
 }
 
 .container{
   display: grid;
-  grid-template-rows: minmax(150px, 1fr) 3fr;
+  grid-template-rows: 200px 100px 3fr;
 }
 
 input, button, textarea, select {
