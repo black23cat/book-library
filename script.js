@@ -16,8 +16,6 @@ submitBtn.addEventListener("click", (event) => {
   event.preventDefault();
   // Run addBookToLibrary function after submit button is pressed
   addBookToLibrary(this.author.value, this.title.value, this.pages.value, this.read.value);
-  // Immediately display book to page as card
-  myLibrary[myLibrary.length -1].displayToCard();
   // Reset and closing form dialog after submiting
   form.reset();
   formDialog.close();
@@ -103,12 +101,14 @@ function addBookToLibrary(a, t, p, r){
   // Check if there's already a book in a myLibrary array
   if(myLibrary.length == 0){
     myLibrary.push(new Book(a, t, p, r));
+    myLibrary[myLibrary.length -1].displayToCard();
   }else{
     // If the book is already in myLibrary this func will not add new book
     if(checkAuthor(myLibrary, a) && checkTitle(myLibrary, t)){
       alert(`This book is already in your galery.`);
     }else{
-      myLibrary.push(new Book(a, t, p, r));
+      myLibrary.push(new Book(a, t, p, r));      
+      myLibrary[myLibrary.length -1].displayToCard();
     }
   };
 }
