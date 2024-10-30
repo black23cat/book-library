@@ -14,18 +14,18 @@ showBtn.addEventListener("click", ()=>{
 submitBtn.addEventListener("click", (event) => {
   // Prefent default font submit behavior
   event.preventDefault();
-  // run addBookToLibrary function after submit button is pressed
+  // Run addBookToLibrary function after submit button is pressed
   addBookToLibrary(this.author.value, this.title.value, this.pages.value, this.read.value);
   // Immediately display book to page as card
   myLibrary[myLibrary.length -1].displayToCard();
-  //reset and closing form dialog after submiting
+  // Reset and closing form dialog after submiting
   form.reset();
   formDialog.close();
   console.log(content);
   console.log(myLibrary);
 });
 
-// new book constructor
+// New book constructor
 function Book(author, title, pages, read){
   this.author = author;
   this.title = title;
@@ -35,6 +35,7 @@ function Book(author, title, pages, read){
 }
 
 Book.prototype.displayToCard = function(){
+  // Creating element necessary for card display
   const bookCard = document.createElement("div");
   const bookTitle = document.createElement("p");
   const bookAuthor = document.createElement("p");
@@ -44,6 +45,8 @@ Book.prototype.displayToCard = function(){
   const deleteBook = document.createElement("button");
   const dataAttribute = kebabCase(this.title);
   const readStatus = this.read === "yes" ? true: false;
+  // --------------------------------------------
+  // Set up required attribute for card child
   bookCard.setAttribute("class", "card");
   bookCard.setAttribute("id", dataAttribute)
   bookTitle.textContent = this.title;
@@ -56,13 +59,44 @@ Book.prototype.displayToCard = function(){
   deleteBook.textContent = "X";
   deleteBook.setAttribute("data-book-title", dataAttribute);
   deleteBook.setAttribute("class", "remove")
+  // --------------------------------------------
+  // Append child to card container
   bookCard.appendChild(bookTitle);
   bookCard.appendChild(bookAuthor);
   bookCard.appendChild(bookPages);
   bookCard.appendChild(readPara);
   bookCard.appendChild(readParaToggle);
   bookCard.appendChild(deleteBook);
+  // Append card to main content
   content.appendChild(bookCard);
+
+  // Function to invoke when removeBook button is clicked
+  deleteBook.addEventListener("click", function(){
+    // Find index with dataset attribute attach to card display
+    const title = this.dataset.bookTitle;
+    let bookIndex = myLibrary.map(e => e.bookData).indexOf(title);
+    myLibrary.splice(bookIndex, 1);
+    console.log(myLibrary);
+    // Remove book from display after finding card and book index
+    const removeBookDisplay = document.getElementById(title);
+    content.removeChild(removeBookDisplay);
+    console.log(content)
+  });
+
+  // Function to invoke when readToggle button is clicked
+  // This will change the read paragraph 
+  readParaToggle.addEventListener("click", function(){
+    // check if the book is already read or not 
+    // based on value that user input in form
+    const bookReadStatus = this.textContent === "Read"? true: false;
+    if(bookReadStatus){
+      this.textContent = "Unread";
+      readPara.textContent = "This book is not read yet.";
+    }else{
+      this.textContent = "Read";
+      readPara.textContent = "You have read this book.";
+    }
+  });
 }
 
 function addBookToLibrary(a, t, p, r){
@@ -70,7 +104,7 @@ function addBookToLibrary(a, t, p, r){
   if(myLibrary.length == 0){
     myLibrary.push(new Book(a, t, p, r));
   }else{
-    // if the book is already in myLibrary this func will not add the book
+    // If the book is already in myLibrary this func will not add new book
     if(checkAuthor(myLibrary, a) && checkTitle(myLibrary, t)){
       alert(`This book is already in your galery.`);
     }else{
