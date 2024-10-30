@@ -12,8 +12,8 @@ showBtn.addEventListener("click", ()=>{
 form.addEventListener("click", function(e){
   //check what button is being clicked
   switch(e.target.value){
-    // code to run if submit button is clicked
     case "confirm":
+      //Set up default value if user not input the form
       if(this.title.value === "") this.title.value = `No Title Book-${myLibrary.length + 1}`;
       if(this.author.value === "") this.author.value = `No Author Book-${myLibrary.length + 1}`;
       if(this.pages.value === "") this.pages.value = "0";
@@ -23,7 +23,6 @@ form.addEventListener("click", function(e){
       break;
     // code to run if cancel button is clicked
     case "cancel":
-      form.reset();
       formDialog.close();
       break;
   }
@@ -80,11 +79,9 @@ Book.prototype.displayToCard = function(){
     const title = this.dataset.bookTitle;
     let bookIndex = myLibrary.map(e => e.bookData).indexOf(title);
     myLibrary.splice(bookIndex, 1);
-    console.log(myLibrary);
     // Remove book from display after finding card and book index
     const removeBookDisplay = document.getElementById(title);
     content.removeChild(removeBookDisplay);
-    console.log(content)
   });
 
   // Function to invoke when readToggle button is clicked
