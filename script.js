@@ -49,7 +49,7 @@ Book.prototype.displayToCard = function(){
   bookCard.setAttribute("id", dataAttribute)
   bookTitle.textContent = this.title;
   bookAuthor.textContent = this.author;
-  bookPages.textContent = this.pages;
+  bookPages.textContent = `${this.pages} pages.`;
   readPara.textContent = readStatus? "You have read this book."
                         : "This book is not read yet.";
   readParaToggle.textContent = readStatus? "Read" : "Unread";
@@ -137,5 +137,9 @@ function kebabCase(str){
   return str.toLowerCase().split(" ").join("-");
 }
 
-myLibrary.push(new Book("J.R.R Tolkiens", "The Hobbit", "298", "no"));
-myLibrary[0].displayToCard();
+myLibrary.push(new Book("George R.R Martin", "Game of Thrones", "694", "no"));
+myLibrary.push(new Book("George R.R Martin", "A Clash of Kings", "768", "no"));
+myLibrary.push(new Book("George R.R Martin", "A Storm of Swords", "973", "no"));
+myLibrary.push(new Book("George R.R Martin", "A Feast for Crows", "753", "no"));
+myLibrary.push(new Book("George R.R Martin", "A Dance with Dragons", "1056", "no"));
+myLibrary.forEach(book => book.displayToCard());
