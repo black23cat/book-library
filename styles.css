@@ -1,5 +1,5 @@
 :root{
-  --border-clr: rgb(124, 124, 124);
+  --border-clr: rgb(165, 165, 165);
 }
 
 *{
@@ -126,7 +126,8 @@ select#read:hover{
 input[type="text"]:focus, 
 input[type="number"]:focus,
 select#read:focus{
-  outline: 1px solid rgb(54, 54, 54);
+  outline: none;
+  border: 1px solid rgb(0, 0, 0);
   box-shadow: 2px 2px 3px var(--border-clr);
 }
 
@@ -157,6 +158,17 @@ select#read:focus{
   box-shadow: 2px 2px 4px var(--border-clr);
 }
 
+.content{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.card{
+  width: 250px;
+  height: 400px;
+}
 
 .card{
   padding: 15px;
