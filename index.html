@@ -19,7 +19,7 @@
       <h1>Book Library</h1>
       <span id="show-form-modal"></span>
       <dialog id="form-modal">
-        <form action="get">
+        <form method="dialog">
           <h3>Add new Book</h3>
           <div>
             <label for="author">Author :</label>
@@ -41,8 +41,8 @@
               </select>
             </div>
           <div class="form-button">
-            <button value="cancel" formmethod="dialog">Cancel</button>
-            <button type="submit" id="submit" value="default">Confirm</button>
+            <button type="button" formmethod="dialog" value="cancel">Cancel</button>
+            <button type="submit" id="submit" value="confirm">Confirm</button>
           </div>
         </form>
       </dialog>
