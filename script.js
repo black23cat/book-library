@@ -83,7 +83,7 @@ Book.prototype.displayToCard = function(){
 
   // Function to invoke when readToggle button is clicked
   // This will change the read paragraph 
-  readParaToggle.addEventListener("click", function(){
+  readParaToggle.addEventListener("click", () =>{
     // check if the book is already read or not 
     // based on value that user input in form
     const bookReadStatus = this.read === "yes"? true: false;
@@ -102,7 +102,7 @@ Book.prototype.displayToCard = function(){
 function addBookToLibrary(a, t, p, r){
   // Check if there's already a book in a myLibrary array
   if(a === "" || t === "" || p === ""){
-    alert('Please fill out all fields.')
+    alert('Please fill out all fields.');
   }else if(myLibrary.length == 0){
     myLibrary.push(new Book(a, t, p, r));
     myLibrary[myLibrary.length -1].displayToCard();
