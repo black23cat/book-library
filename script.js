@@ -101,7 +101,9 @@ Book.prototype.displayToCard = function(){
 
 function addBookToLibrary(a, t, p, r){
   // Check if there's already a book in a myLibrary array
-  if(myLibrary.length == 0){
+  if(a === "" || t === "" || p === ""){
+    alert('Please fill out all fields.')
+  }else if(myLibrary.length == 0){
     myLibrary.push(new Book(a, t, p, r));
     myLibrary[myLibrary.length -1].displayToCard();
   }else{
@@ -139,8 +141,8 @@ function kebabCase(str){
   return str.toLowerCase().split(" ").join("-");
 }
 
-myLibrary.push(new Book("George R.R Martin", "Game of Thrones", "694", "no"));
-myLibrary.push(new Book("George R.R Martin", "A Clash of Kings", "768", "no"));
+myLibrary.push(new Book("George R.R Martin", "Game of Thrones", "694", "yes"));
+myLibrary.push(new Book("George R.R Martin", "A Clash of Kings", "768", "yes"));
 myLibrary.push(new Book("George R.R Martin", "A Storm of Swords", "973", "no"));
 myLibrary.push(new Book("George R.R Martin", "A Feast for Crows", "753", "no"));
 myLibrary.push(new Book("George R.R Martin", "A Dance with Dragons", "1056", "no"));
