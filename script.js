@@ -1,7 +1,6 @@
 const myLibrary = [];
 const showBtn = document.getElementById("show-form-modal");
 const formDialog = document.getElementById("form-modal");
-const submitBtn = document.getElementById("submit");
 const form = document.querySelector("form");
 const content = document.querySelector(".content");
 
@@ -10,17 +9,24 @@ showBtn.addEventListener("click", ()=>{
   formDialog.showModal();
 });
 
-// Close form modal
-submitBtn.addEventListener("click", (event) => {
-  // Prefent default font submit behavior
-  event.preventDefault();
-  // Run addBookToLibrary function after submit button is pressed
-  addBookToLibrary(this.author.value, this.title.value, this.pages.value, this.read.value);
-  // Reset and closing form dialog after submiting
-  form.reset();
-  formDialog.close();
-  console.log(content);
-  console.log(myLibrary);
+form.addEventListener("click", function(e){
+  //check what button is being clicked
+  switch(e.target.value){
+    // code to run if submit button is clicked
+    case "confirm":
+      if(this.title.value === "") this.title.value = `No Title Book-${myLibrary.length + 1}`;
+      if(this.author.value === "") this.author.value = `No Author Book-${myLibrary.length + 1}`;
+      if(this.pages.value === "") this.pages.value = "0";
+      addBookToLibrary(this.author.value, this.title.value, this.pages.value, this.read.value);
+      form.reset();
+      formDialog.close();
+      break;
+    // code to run if cancel button is clicked
+    case "cancel":
+      form.reset();
+      formDialog.close();
+      break;
+  }
 });
 
 // New book constructor
@@ -101,9 +107,7 @@ Book.prototype.displayToCard = function(){
 
 function addBookToLibrary(a, t, p, r){
   // Check if there's already a book in a myLibrary array
-  if(a === "" || t === "" || p === ""){
-    alert('Please fill out all fields.');
-  }else if(myLibrary.length == 0){
+  if(myLibrary.length == 0){
     myLibrary.push(new Book(a, t, p, r));
     myLibrary[myLibrary.length -1].displayToCard();
   }else{
