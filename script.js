@@ -12,9 +12,17 @@ showBtn.addEventListener("click", ()=>{
 
 // Close form modal
 submitBtn.addEventListener("click", (event) => {
+  // Prefent default font submit behavior
   event.preventDefault();
+  // run addBookToLibrary function after submit button is pressed
+  addBookToLibrary(this.author.value, this.title.value, this.pages.value, this.read.value);
+  // Immediately display book to page as card
+  myLibrary[myLibrary.length -1].displayToCard();
+  //reset and closing form dialog after submiting
   form.reset();
   formDialog.close();
+  console.log(content);
+  console.log(myLibrary);
 });
 
 // new book constructor
