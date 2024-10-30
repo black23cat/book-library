@@ -52,7 +52,7 @@ Book.prototype.displayToCard = function(){
   bookPages.textContent = `${this.pages} pages.`;
   readPara.textContent = readStatus? "You have read this book."
                         : "This book is not read yet.";
-  readParaToggle.textContent = readStatus? "Read" : "Unread";
+  readParaToggle.textContent = readStatus? "Unread" : "Read" ;
   readParaToggle.setAttribute("class", "read-toggle");
   deleteBook.textContent = "X";
   deleteBook.setAttribute("data-book-title", dataAttribute);
@@ -86,13 +86,15 @@ Book.prototype.displayToCard = function(){
   readParaToggle.addEventListener("click", function(){
     // check if the book is already read or not 
     // based on value that user input in form
-    const bookReadStatus = this.textContent === "Read"? true: false;
+    const bookReadStatus = this.read === "yes"? true: false;
     if(bookReadStatus){
-      this.textContent = "Unread";
+      this.read = "no";
       readPara.textContent = "This book is not read yet.";
+      readParaToggle.textContent = "Read";
     }else{
-      this.textContent = "Read";
+      this.read = "yes";
       readPara.textContent = "You have read this book.";
+      readParaToggle.textContent = "Unread";
     }
   });
 }
