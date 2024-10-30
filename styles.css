@@ -1,25 +1,29 @@
+:root{
+  --border-clr: rgb(124, 124, 124);
+}
+
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+input, button, textarea, select {
+  font: inherit;
+  font-size: 100%;
+  padding: 0;
+  margin: 0;
+}
+
 body{
   font: 1.2rem "EB Garamond", sans-serif;
   text-align: center;
+  background-color: 	rgb(255,248,220);
 }
 
-.image-credits{
-  position: absolute;
-  bottom: 14px;
-  right: 10px;
-  color: white;
-  font-weight: 600;
-  text-shadow: 2px 2px 2px rgb(124, 124, 124);
-}
-
-.image-credits a{
-  color: white;
+.container{
+  display: grid;
+  grid-template-rows: 200px 100px auto;
 }
 
 .header-images{
@@ -28,11 +32,26 @@ body{
   background-repeat: repeat;
   width: 100%;
   position: relative;
-  box-shadow: 0 1px 2px 3px rgb(124, 124, 124);
+  box-shadow: 0 1px 2px 3px var(--border-clr);
+}
+
+.image-credits{
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  color: white;
+  font-weight: 600;
+  text-shadow: 2px 2px 2px var(--border-clr);
+}
+
+.image-credits a{
+  color: white;
 }
 
 .header-text h1{
   font-size: 3rem;
+  color: rgb(53, 53, 53);
+  margin-top: 15px;
 }
 
 #show-form-modal::after{
@@ -56,21 +75,91 @@ body{
 dialog[open]{
   position: fixed;
   margin: auto;
+  border: 5px solid var(--border-clr);
+  border-radius: 10px;
 }
+
+form{
+  padding: 20px 20px;
+  text-align: left;
+  background-color: rgb(238, 238, 238);
+}
+
+form h3{
+  color: rgb(53, 53, 53);
+  text-align: center;
+}
+
+label{
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+label[for="read"]{
+  display: inline;
+  width: auto;
+}
+
+select#read{
+  margin: 15px 7px;
+  border-radius: 5px;
+}
+
+input[type="text"], 
+input[type="number"]{
+  border-radius: 8px;
+  padding: 5px 15px;
+  font-size: 1rem;
+  font-weight: 500;
+  border:1px solid var(--border-clr);
+  width: 300px;
+}
+
+input[type="text"]:hover, 
+input[type="number"]:hover,
+select#read:hover{
+  box-shadow: 2px 2px 3px var(--border-clr);
+}
+
+input[type="text"]:focus, 
+input[type="number"]:focus,
+select#read:focus{
+  outline: 1px solid rgb(54, 54, 54);
+  box-shadow: 2px 2px 3px var(--border-clr);
+}
+
+.form-button{
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-button button{
+  padding: 5px 10px;
+  width: 100px;
+  margin: 20px 0 10px 0;
+  background-color: rgb(126, 126, 126);
+  color: rgb(238, 238, 238);
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+}
+
+.form-button button:hover{
+  cursor: pointer;
+  background-color: rgb(156, 156, 156);
+  box-shadow: 0 0 2px 2px var(--border-clr);
+}
+
+.form-button button:active{
+  background-color: rgb(54, 54, 54);
+  box-shadow: 2px 2px 4px var(--border-clr);
+}
+
 
 .card{
   padding: 15px;
   border: 1px solid red;
-}
 
-.container{
-  display: grid;
-  grid-template-rows: 200px 100px 3fr;
-}
-
-input, button, textarea, select {
-  font: inherit;
-  font-size: 100%;
-  padding: 0;
-  margin: 0;
 }
