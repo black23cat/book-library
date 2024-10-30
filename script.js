@@ -59,9 +59,11 @@ Book.prototype.displayToCard = function(){
                         : "This book is not read yet.";
   readParaToggle.textContent = readStatus? "Unread" : "Read" ;
   readParaToggle.setAttribute("class", "read-toggle");
+  readParaToggle.setAttribute("title", "Toggle read status");
   deleteBook.textContent = "X";
   deleteBook.setAttribute("data-book-title", dataAttribute);
-  deleteBook.setAttribute("class", "remove")
+  deleteBook.setAttribute("class", "remove");
+  deleteBook.setAttribute("title", "Delete book");
   // --------------------------------------------
   // Append child to card container
   bookCard.appendChild(bookTitle);
