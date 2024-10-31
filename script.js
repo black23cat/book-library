@@ -16,7 +16,6 @@ form.addEventListener("click", function(e){
       //Set up default value if user not input the form
       if(this.title.value === "") this.title.value = `No Title Book-${myLibrary.length + 1}`;
       if(this.author.value === "") this.author.value = `No Author Book-${myLibrary.length + 1}`;
-      if(this.pages.value === "") this.pages.value = "0";
       addBookToLibrary(this.author.value, this.title.value, this.pages.value, this.read.value);
       form.reset();
       formDialog.close();
