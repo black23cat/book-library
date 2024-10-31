@@ -1,5 +1,17 @@
 :root{
-  --border-clr: rgb(165, 165, 165);
+  --body-bg-clr: rgb(255,248,220);
+  --header-text-clr: rgb(20, 20, 20);
+  --header-box-shadow: 0 1px 2px 3px var( --header-box-shadow-clr);
+  --header-box-shadow-clr: rgb(165, 165, 165);
+  --credit-clr: rgb(250, 250, 250);
+  --credit-text-shadow: 2px 2px 2px var(--header-box-shadow-clr);
+  --form-bg-clr: rgb(255, 242, 215);
+  --form-bdr-clr: rgb(123, 63, 0);
+  --input-border: 1px solid var(--header-box-shadow-clr);
+  --input-shadow: 2px 2px 3px var(--header-box-shadow-clr);
+  --book-bg-clr: rgb(128, 0, 0);
+  --book-text-clr: rgb(240, 230, 140);
+  --book-btn-bdr: 1px solid var(--book-text-clr);
 }
 
 *{
@@ -18,7 +30,7 @@ input, button, textarea, select {
 body{
   font: 1.2rem "EB Garamond", sans-serif;
   text-align: center;
-  background-color: 	rgb(255,248,220);
+  background-color: var(--body-bg-clr);
 }
 
 .container{
@@ -32,25 +44,26 @@ body{
   background-repeat: repeat;
   width: 100%;
   position: relative;
-  box-shadow: 0 1px 2px 3px var(--border-clr);
+  box-shadow: var(--header-box-shadow);
 }
 
 .image-credits{
   position: absolute;
   bottom: 15px;
   right: 15px;
-  color: white;
+  color: var(--credit-clr);
   font-weight: 600;
-  text-shadow: 2px 2px 2px var(--border-clr);
+  text-shadow: var(--credit-text-shadow);
 }
 
 .image-credits a{
-  color: white;
+  color: var(--credit-clr);
 }
 
 .header-text h1{
   font-size: 3rem;
-  color: rgb(53, 53, 53);
+  color: var(--header-text-clr);
+  text-shadow: var(--credit-text-shadow);
   margin-top: 15px;
 }
 
@@ -75,24 +88,27 @@ body{
 dialog[open]{
   position: fixed;
   margin: auto;
-  border: 5px solid var(--border-clr);
+  border: 5px solid var(--form-bdr-clr);
+  outline: 2px solid rgb(245, 222, 179);
   border-radius: 10px;
 }
 
 form{
   padding: 20px 20px;
   text-align: left;
-  background-color: rgb(238, 238, 238);
+  background-color: var(--form-bg-clr);
 }
 
 form h3{
-  color: rgb(53, 53, 53);
+  color: var(--header-text-clr);
   text-align: center;
+  text-shadow: var(--credit-text-shadow);
 }
 
 label{
   display: block;
   width: 100%;
+  padding: 3px;
   margin-top: 10px;
   font-weight: 500;
 }
@@ -109,26 +125,26 @@ select#read{
 
 input[type="text"], 
 input[type="number"]{
+  outline: none;
   border-radius: 8px;
   padding: 5px 15px;
   font-size: 1rem;
   font-weight: 500;
-  border:1px solid var(--border-clr);
+  border:var(--input-border);
   width: 300px;
 }
 
 input[type="text"]:hover, 
 input[type="number"]:hover,
 select#read:hover{
-  box-shadow: 2px 2px 3px var(--border-clr);
+  box-shadow: var(--input-shadow);
 }
 
 input[type="text"]:focus, 
 input[type="number"]:focus,
 select#read:focus{
-  outline: none;
-  border: 1px solid rgb(0, 0, 0);
-  box-shadow: 2px 2px 3px var(--border-clr);
+  outline: 1px solid var(--form-bdr-clr);
+  box-shadow: var(--input-shadow);
 }
 
 .form-button{
@@ -140,8 +156,8 @@ select#read:focus{
   padding: 5px 10px;
   width: 100px;
   margin: 20px 0 10px 0;
-  background-color: rgb(126, 126, 126);
-  color: rgb(238, 238, 238);
+  background-color: var(--form-bdr-clr);
+  color: var(--credit-clr);
   font-weight: 500;
   border: none;
   border-radius: 8px;
@@ -149,13 +165,13 @@ select#read:focus{
 
 .form-button button:hover{
   cursor: pointer;
-  background-color: rgb(156, 156, 156);
-  box-shadow: 0 0 2px 2px var(--border-clr);
+  opacity: 0.8;
+  box-shadow: var(--header-box-shadow);
 }
 
 .form-button button:active{
-  background-color: rgb(54, 54, 54);
-  box-shadow: 2px 2px 4px var(--border-clr);
+  opacity: 1;
+  box-shadow: var(--header-box-shadow);
 }
 
 .content{
@@ -174,12 +190,13 @@ select#read:focus{
   width: 250px;
   height: 350px;
   padding: 15px;
-  background-color: rgb(240, 240, 240);
+  color: var(--book-text-clr);
+  background-color: var(--book-bg-clr);
   border: 1px solid rgb(82, 82, 82);
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
-  border-left: 20px solid rgb(218, 218, 218);
-  box-shadow: 2px 2px 8px 4px rgb(161, 161, 161);
+  border-left: 20px solid var(--header-text-clr);
+  box-shadow: 2px 2px 8px 4px var(--header-box-shadow-clr);
 }
 
 
@@ -197,9 +214,10 @@ select#read:focus{
 .card button.read-toggle{
   position: absolute;
   bottom: -45px;
-  background-color: rgb(240, 240, 240);
-  border: 1px solid rgb(199, 199, 199);
+  color: var(--book-text-clr);
+  background-color: var(--header-text-clr);
   padding: 2px 10px;
+  border: var(--book-btn-bdr);
   border-radius: 8px;
 }
 
@@ -209,18 +227,29 @@ select#read:focus{
   right: 5px;
   padding: 0 5px;
   border-radius: 15px;
-  background-color: rgb(255, 55, 55);
-  border: 1px solid rgb(94, 94, 94);
+  color: var(--book-text-clr);
+  background-color: var(--header-text-clr);
+  border: var(--book-btn-bdr);
 }
 
 .card button.read-toggle:hover,
 .card button.remove:hover{
   cursor: pointer;
-  box-shadow: 1px 1px 2px 2px rgb(192, 192, 192);
+  box-shadow: 0 0 3px 2px var(--header-box-shadow-clr);
 }
 
-.card button.read-toggle:active,
+.card button.remove:hover{
+  --header-text-clr: rgb(187, 25, 25);
+}
+
 .card button.remove:active{
-  background-color: rgb(197, 197, 197);
-  border: 1px solid rgb(161, 161, 161);
+  --header-text-clr: rgb(255, 0, 0);
+}
+
+.card button.read-toggle:hover{
+  --header-text-clr: rgb(56, 56, 56);
+}
+
+.card button.read-toggle:active{
+  --header-text-clr: rgb(0, 0, 0);
 }
