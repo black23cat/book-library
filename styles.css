@@ -177,7 +177,8 @@ select#read:focus{
 .content{
   display: flex;
   flex-wrap: wrap;
-  gap: 70px 40px;
+  gap: 100px 80px;
+  padding: 20px 80px;
   justify-content: center;
 }
 
