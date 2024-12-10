@@ -62,6 +62,7 @@ const screenDisplay = function (){
           myLibrary.splice(index, 1);
           content.removeChild(bookCard);
           console.log(myLibrary);
+          updateScreen();
         }
         if(e.target === readParaToggle){
           if(book.bookReadStatus){
