@@ -1,2 +1,3 @@
-# book-library
-Odin Project : Book Library
+# todo-list
+
+Odin Project: Todo List
