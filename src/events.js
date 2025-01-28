@@ -24,7 +24,7 @@ export default function events() {
     }
     if (form.checkValidity() && e.target.id === 'confirm') {
       const inputValue = [...form.getElementsByTagName('input')].map(
-        (input) => input.value,
+        (input) => input.value
       );
       inputValue.push(document.getElementById('read').value);
       book.addBookToLibrary(inputValue);
@@ -33,7 +33,6 @@ export default function events() {
       formDialog.close();
       form.reset();
     } else if (e.target.id === 'cancel') {
-      alert('cancel');
       form.reset();
       formDialog.close();
     }
